@@ -86,7 +86,7 @@ pib=pib..string.char(pr%256)
 pr=math.floor(pr/256)
 end
 ct=fb..pib
-sig=hm("e4Yn8ckbCJtw2sv7qmbg",ct,h) -- secret key btw
+sig=hm("e4Yn8ckbCJtw2sv7qmbg",ct,h)
 acb=sig..ct
 ac=b64(acb):gsub("+","-"):gsub("/","_")
 pd=0
@@ -94,10 +94,17 @@ ac=ac:gsub("=",function()pd=pd+1 return""end)
 ac=ac..tostring(pd)
 return ac,gcode
 end
+
 ac,gcode=gc(game.PlaceId)
-setclipboard(ac.."\n"..tostring(game.PlaceId))
-game:GetService("RobloxReplicatedStorage").ContactListIrisInviteTeleport:FireServer(game.PlaceId,"",ac)
+placeId=game.PlaceId
+
+readyCode='local accesscode="'..ac..'"\nlocal placeid=game.PlaceId\ngame:GetService("RobloxReplicatedStorage").ContactListIrisInviteTeleport:FireServer(placeid,"'..placeId..'",accesscode)'
+
+setclipboard(readyCode)
+
+game:GetService("RobloxReplicatedStorage").ContactListIrisInviteTeleport:FireServer(placeId,"",ac)
+
 spawn(function()
 wait(2)
-setclipboard(ac.."\n"..tostring(game.PlaceId))
+setclipboard(readyCode)
 end)
