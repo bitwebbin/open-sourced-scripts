@@ -1,3 +1,16 @@
+-- Verificação de execução múltipla
+if _G.EmoteInterfaceExecuted then
+    local SG = game:GetService("StarterGui")
+    SG:SetCore("SendNotification", {
+        Title = "Emote System",
+        Text = "this script has already been executed, this execution was avoided to prevent bugs yk what i mean ;)",
+        Duration = 8
+    })
+    return
+end
+
+_G.EmoteInterfaceExecuted = true
+
 local UIS = game:GetService("UserInputService")
 local RS = game:GetService("ReplicatedStorage")
 local Plrs = game:GetService("Players")
@@ -338,8 +351,7 @@ local function showMsg(msg, time)
     SG:SetCore("SendNotification", {
         Title = "Emote System",
         Text = msg,
-        Duration = time or 5,
-        Icon = "rbxassetid://0"
+        Duration = time or 5
     })
 end
 
