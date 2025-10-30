@@ -87,5 +87,6 @@ Blur:Destroy()
 
 wait(0.5)
 
-Player:Kick("my favorite thing is gone. fuck you roblox. \n\n-- one of bitwebbin's account user: miki")
+Player:Kick("my favorite thing is gone. fuck you roblox. \n\n-- one of bitwebbin's account user: ???")
+
 
